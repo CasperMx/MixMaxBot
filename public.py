@@ -2982,18 +2982,26 @@ def bot(op):
 
 
 #--------------------------------------------------------
-            elif "/musik " in msg.text:
-					songname = msg.text.replace("/musik ","")
-					params = {"songname": songname}
-					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-					data = r.text
-					data = json.loads(data)
-					for song in data:
-						abc = song[3].replace('https://','http://')
-						cl.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
-						cl.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar :) ")
-						cl.sendAudioWithURL(msg.to,abc)
-						cl.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+            elif "music" in msg.text.lower():
+                    sep = msg.text.split(" ")
+                    search = msg.text.replace(sep[0] + " ","")
+                    params = {'songname': search}
+                    with requests.session() as web:
+                        web.headers["User-Agent"] = random.choice(settings["userAgent"])
+                        r = web.get("https://ide.fdlrcn.com/workspace/yumi-apis/joox?" + urllib.urlencode(params))
+                        try:
+                            data = json.loads(r.text)
+                            for song in data:
+                                ret_ = "╔══[ Music ]"
+                                ret_ += "\n╠ Nama lagu : {}".format(str(song[0]))
+                                ret_ += "\n╠ Durasi : {}".format(str(song[1]))
+                                ret_ += "\n╠ Link : {}".format(str(song[3]))
+                                ret_ += "\n╚══[ Waiting Audio ]"
+                                cl.sendText(msg.to, str(ret_))
+                                cl.sendText(msg.to, "Mohon bersabar musicnya lagi di upload")
+                                cl.sendAudioWithURL(msg.to, song[3])
+                        except:
+                            cl.sendText(to, "Musik tidak ditemukan")
 	
             elif '/lirik ' in msg.text.lower():
                 try:
