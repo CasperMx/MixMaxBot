@@ -15,7 +15,7 @@ cl = LINETCR.LINE()
 cl.login(token="token bot")
 #cl.login(token='TOKEN_HERE')
 cl.loginResult()
-print "PUBLICK PRANKBOTS SUCCESS LOGIN\nSELAMAT MENGGUNAKAN"
+print "LOGIN SUCCES\nSELAMAT MENGGUNAKAN"
 
 
 reload(sys)
@@ -98,16 +98,14 @@ helpset="""{{ADMIN/OWNER}}
 ✰ Lurkers
 ✰ Broadcast: "text"
 
-:::SUBCRABE:::
-https://www.youtube.com/channel/UCycBrqSWEHdk-slnhUmGWiQ
 """
 
 KAC=[cl]
 mid = cl.getProfile().mid
 
 Bots=[mid]
-Creator= "mid kamu" 
-admin= "mid kamu" 
+Creator= "u8334d2a4e49aa7155dcb58972e070a36" 
+admin= "u8334d2a4e49aa7155dcb58972e070a36" 
 
 contact = cl.getProfile()
 backup1 = cl.getProfile()
@@ -123,7 +121,7 @@ wait = {
     'pap':{},
     'message':"",
     'invite':{},
-    'autoCancel':{"on":True,"members":2},
+    'autoCancel':{}, #"on":True,"members":2
     'steal':{},
     'gift':{},
     'likeOn':{},     
@@ -134,7 +132,7 @@ wait = {
     "comment2":"Wkwkwk ＼（○＾ω＾○）／",
     "comment3":"Lucu Banget!!! ヘ(^_^)ヘ",
     "comment4":"Nice Kak (^_^)",
-    "comment5":"Bot Auto Like ©By : https://www.youtube.com/channel/UCycBrqSWEHdk-slnhUmGWiQ\nContact pembuat : 👉 line.me/ti/p/~adiputra_95",    
+    "comment5":"Kalo Disini Jangan Baper Kak",    
     "commentOn":True,
     "commentBlack":{},
     "blacklist":{},
@@ -565,14 +563,14 @@ def bot(op):
               #kr.sendText(op.param1,"Nama Grup: " + kr.getGroup(op.param1).name + "\nJumlah Member: " + str(len (kr.getGroup(op.param1).members)) + " orang\n\n")
               xname = cl.getContact(op.param2).displayName
               xlen = str(len(xname)+1)
-              cl.sendText(op.param1,"PRANKBOTS \n━━━━━━━━━━━━━━━━━\nNama Grup: " + cl.getGroup(op.param1).name + "\n Member: " + str(len (cl.getGroup(op.param1).members)) + " orang\n\nMaaf,  @"+xname+ "\nmember kurang dari 30 org\nUntuk info,Silahkan cek video nya di youtube dan jangan lupa subcrabe channel nya\n\nCHANNEL\nhttps://www.youtube.com/channel/UCycBrqSWEHdk-slnhUmGWiQ")
+              cl.sendText(op.param1,"MixMax Notice\n━━━━━━━━━━━━━━━━━\nNama Grup: " + cl.getGroup(op.param1).name + "\nMember: " + str(len (cl.getGroup(op.param1).members)) + " orang\n\nMaaf,  @"+xname+ "\nmember kurang dari 30 org\nUntuk info,Silahkan cek video nya di youtube dan jangan lupa subcrabe channel nya\n\nCHANNEL\nhttps://www.youtube.com/channel/UCycBrqSWEHdk-slnhUmGWiQ")
               hanna = Message(to=op.param1, from_=None, text=None, contentType=13)
               hanna.contentMetadata={'mid': admin}
               cl.sendMessage(hanna)
-              cl.sendText(op.param1,"PEMBUAT BOT")
-              hanna.contentMetadata={'mid':'ufce863f62f40706c01fa4a3c3c4cb096'}
+              cl.sendText(op.param1,"Staff MixMax")
+              hanna.contentMetadata={'mid':'u8334d2a4e49aa7155dcb58972e070a36'}
               cl.sendMessage(hanna)
-              cl.sendText(op.param1,"SILAHKAN DI ADD KK BYE")
+              cl.sendText(op.param1,"Add Staff MixMax Kak")
               time.sleep(1.0) 
               cl.leaveGroup(op.param1)
             else:
