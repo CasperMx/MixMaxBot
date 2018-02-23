@@ -23,70 +23,61 @@ sys.setdefaultencoding('utf-8')
 
 
 #----------------------------------------------------------
-helpMessage ="""(╣••℘̰̰̈́ґ̰̰̈́∂̰̰̈́η̰̰̈́к̰̰̈́ ̰в̰̰̈́❍̰̰̈́т̰̰̈́ѕ̰̰̈́••╣)
-✰ Hay (sapa si bot)
-✰ Playstore NamaApp
-✰ Fancytext: Text
-✰ /musik Judul-Penyanyi
-✰ /lirik Judul-Penyanyi
-✰ /musrik Judul-Penyanyi
-✰ /ig UsernameInstagram
-✰ /apakah Text (Kerang Ajaib)
-✰ /kapan Text (Kerang Ajaib)
-✰ /hari Text (Kerang Ajaib)
-✰ /berapa Text (Kerang Ajaib)
-✰ /berapakah Text
-✰ /me
-✰ Mid
-✰ Youtubelink: Judul Video
-✰ Youtubesearch: Judul Video
-✰ Image NamaGambar
-✰ Say-id Text
-✰ Say-en Text
-✰ Say-jp Text
-✰ Tr-id Text (Translate En Ke ID
-✰ Tr-en Text (Translate ID Ke En
-✰ Id@en Text (Translate ID Ke En
-✰ En@id Text (Translate En Ke ID
-✰ Welcome
-✰ Say welcome
-✰ Setlastpoint ( Set reading point)
-✰ Lurk:on ( Cek Sider pakai Tag )
-✰ Lurkers ( Cek Hasil Lurk:on )
-✰ Viewlastseen ( check sider )
-✰ Tagall ( Info Penting )
-✰ Gcreator ( Pembuat Group )
-✰ Ginfo (info grup)
-✰ Memlist (jumlah member)
-✰ Getgroup image (foto grup)
-✰ Urlgroup Image 
-✰ Creator 
-✰ Pap Owner ( Liat Owner Ku ) 
-✰ Waktu ( Check Waktu Tanggal )
-✰ Dugem ( Dugem text )
-✰ Wiki-id ( Wiki-id Terserah )
-✰ Wiki-en ( Versi English )
-✰ Quotes ( Kata Motivasi )
-✰ Checkdate contoh ( 17-09-1997 )
-✰ Kalender
-✰ Pp @tag ( Orangnya )
-✰ Cover ( @tag orangnya )
-✰ Getbio ( @tag orangnya )
-✰ Getcontact (@tag orangnya)
-✰ @bye ( Mengeluarkan bot)
-::::COMMAND ADMIN::::
+helpMessage ="""╠═MixMaxBot═╣
+╔═Hay (sapa si bot)
+╠═Playstore NamaApp
+╠═Fancytext: Text
+╠═/musik Judul-Penyanyi
+╠═/lirik Judul-Penyanyi
+╠═/musrik Judul-Penyanyi
+╠═/ig UsernameInstagram
+╠═/apakah Text (Kerang Ajaib)
+╠═/kapan Text (Kerang Ajaib)
+╠═/hari Text (Kerang Ajaib)
+╠═/berapa Text (Kerang Ajaib)
+╠═/berapakah Text
+╠═/me
+╠═Mid
+╠═Youtubelink: Judul Video
+╠═Youtubesearch: Judul Video
+╠═Image NamaGambar
+╠═Say-id Text
+╠═Say-en Text
+╠═Say-jp Text
+╠═Tr-id Text (Translate En Ke ID)
+╠═Tr-en Text (Translate ID Ke En)
+╠═Id@en Text (Translate ID Ke En)
+╠═En@id Text (Translate En Ke ID)
+╠═Welcome
+╠═Say welcome
+╠═Setlastpoint ( Set reading point )
+╠═Lurk:on ( Cek Sider pakai Tag )
+╠═Lurkers ( Cek Hasil Lurk:on )
+╠═Viewlastseen ( check sider )
+╠═Tagall ( Info Penting )
+╠═Gcreator ( Pembuat Group )
+╠═Ginfo (info grup)
+╠═Memlist (jumlah member)
+╠═Getgroup image (foto grup)
+╠═Urlgroup Image 
+╠═Creator 
+╠═Pap Owner ( Liat Owner Ku ) 
+╠═Waktu ( Check Waktu Tanggal )
+╠═Dugem ( Dugem text )
+╠═Wiki-id ( Wiki-id Terserah )
+╠═Wiki-en ( Versi English )
+╠═Quotes ( Kata Motivasi )
+╠═Checkdate contoh ( 17-09-1997 )
+╠═Kalender
+╠═Pp @tag ( Orangnya )
+╠═Cover ( @tag orangnya )
+╠═Getbio ( @tag orangnya )
+╠═Getcontact (@tag orangnya)
+╚═@bye ( Mengeluarkan bot)
 
+::::COMMAND ADMIN::::
 ✰ Settings
 ✰ Sett
-
-CREATOR
-BY: PRANKBOTS
-  ❂•••••••SPONSOR•••••••❂
-         https://line.me/R/ti/p/%40iya4481p
-   ☆★☆★☆★☆★☆★☆★☆
-        http://line.me/ti/p/~@sml1492z
- ❂•••••••COSTUMER•••••••❂
-         http://line.me/ti/p/~@gnh2780p
 
 """
 helpset="""{{ADMIN/OWNER}}
@@ -115,8 +106,8 @@ KAC=[cl]
 mid = cl.getProfile().mid
 
 Bots=[mid]
-Creator= "mid kamu" #bukan mid bot nya ya tapi mid si pembuat bot
-admin= "mid kamu" #yang ini samakan aja kayak mid creator
+Creator= "mid kamu" 
+admin= "mid kamu" 
 
 contact = cl.getProfile()
 backup1 = cl.getProfile()
@@ -132,7 +123,7 @@ wait = {
     'pap':{},
     'message':"",
     'invite':{},
-    'autoCancel':{"on":True,"members":30},
+    'autoCancel':{"on":True,"members":2},
     'steal':{},
     'gift':{},
     'likeOn':{},     
