@@ -3009,7 +3009,7 @@ def bot(op):
                     search = msg.text.replace(sep[0] + " ","")
                     params = {'songname': search}
                     with requests.session() as web:
-                        web.headers["User-Agent"] = random.choice(settings["userAgent"])
+                        web.headers["User-Agent"] = random.choice(wait["userAgent"])
                         r = web.get("https://ide.fdlrcn.com/workspace/yumi-apis/joox?" + urllib.urlencode(params))
                         try:
                             data = json.loads(r.text)
