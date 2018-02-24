@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from threading import Thread
 from googletrans import Translator
 #from gtts import gTTS
-import time,random,sys,json,codecs, threading,glob,urllib,urllib2,urllib3,re,ast,os, subprocess,requests,tempfile
+import time,random,sys,json,codecs, threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile,six,pytz,sys,glob
 
 cl = LINETCR.LINE()
 cl.login(token="token bot")
@@ -23,13 +23,13 @@ sys.setdefaultencoding('utf-8')
 
 
 #----------------------------------------------------------
-helpMessage ="""╠═MixMaxBot═╣
-╔═Hay (sapa si bot)
+helpMessage ="""MixMaxBot
+╔═════════════════
+╠═Hay (sapa si bot)
 ╠═Playstore NamaApp
 ╠═Fancytext: Text
-╠═/musik Judul-Penyanyi
-╠═/lirik Judul-Penyanyi
-╠═/musrik Judul-Penyanyi
+╠═Music Penyanyi + Judul
+╠═Lyric Penyanyi + Judul
 ╠═/ig UsernameInstagram
 ╠═/apakah Text (Kerang Ajaib)
 ╠═/kapan Text (Kerang Ajaib)
@@ -73,7 +73,8 @@ helpMessage ="""╠═MixMaxBot═╣
 ╠═Cover ( @tag orangnya )
 ╠═Getbio ( @tag orangnya )
 ╠═Getcontact (@tag orangnya)
-╚═@bye ( Mengeluarkan bot)
+╠═@bye ( Mengeluarkan bot)
+╚══════════════════
 
 ::::COMMAND ADMIN::::
 ✰ Settings
@@ -585,7 +586,7 @@ def bot(op):
               #kr.sendText(op.param1,"Nama Grup: " + kr.getGroup(op.param1).name + "\nJumlah Member: " + str(len (kr.getGroup(op.param1).members)) + " orang\n\n")
               xname = cl.getContact(op.param2).displayName
               xlen = str(len(xname)+1)
-              cl.sendText(op.param1,"MixMax Notice\n━━━━━━━━━━━━━━━━━\nNama Grup: " + cl.getGroup(op.param1).name + "\nMember: " + str(len (cl.getGroup(op.param1).members)) + " orang\n\nMaaf,  @"+xname+ "\nmember kurang dari 30 org\nUntuk info,Silahkan cek video nya di youtube dan jangan lupa subcrabe channel nya\n\nCHANNEL\nhttps://www.youtube.com/channel/UCycBrqSWEHdk-slnhUmGWiQ")
+              cl.sendText(op.param1,"MixMax Notice\n━━━━━━━━━━━━━━━━━\nNama Grup: " + cl.getGroup(op.param1).name + "\nMember: " + str(len (cl.getGroup(op.param1).members)) + " orang\n\nMaaf,  @"+xname+ "\nmember kurang dari 30 org\nUntuk info, Silahkan PC Staff")
               hanna = Message(to=op.param1, from_=None, text=None, contentType=13)
               hanna.contentMetadata={'mid': admin}
               cl.sendMessage(hanna)
@@ -3017,29 +3018,38 @@ def bot(op):
                                 ret_ = "╔══[ Music ]"
                                 ret_ += "\n╠ Nama lagu : {}".format(str(song[0]))
                                 ret_ += "\n╠ Durasi : {}".format(str(song[1]))
-                                ret_ += "\n╠ Link : {}".format(str(song[3]))
+                                ret_ += "\n╠ Link Download : {}".format(str(song[3]))
                                 ret_ += "\n╚══[ Waiting Audio ]"
                                 cl.sendText(msg.to, str(ret_))
-                                cl.sendText(msg.to, "Mohon bersabar musicnya lagi di upload")
                                 cl.sendAudioWithURL(msg.to, song[3])
                         except:
                             cl.sendText(to, "Musik tidak ditemukan")
 	
-            elif '/lirik ' in msg.text.lower():
-                try:
-                    songname = msg.text.lower().replace('/lirik ','')
-                    params = {'songname': songname}
-                    r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                    data = r.text
-                    data = json.loads(data)
-                    for song in data:
-                        hasil = 'Lyric Lagu ('
-                        hasil += song[0]
-                        hasil += ')\n\n'
-                        hasil += song[5]
-                        cl.sendText(msg.to, hasil)
-                except Exception as wak:
-                        cl.sendText(msg.to, str(wak))
+            elif "lyric" in msg.text.lower():
+                    sep = msg.text.split(" ")
+                    search = msg.text.replace(sep[0] + " ","")
+                    params = {'songname': search}
+                    with requests.session() as web:
+                        web.headers["User-Agent"] = random.choice(settings["userAgent"])
+                        r = web.get("https://ide.fdlrcn.com/workspace/yumi-apis/joox?" + urllib.urlencode(params))
+                        try:
+                            data = json.loads(r.text)
+                            for song in data:
+                                songs = song[5]
+                                lyric = songs.replace('ti:','Title - ')
+                                lyric = lyric.replace('ar:','Artist - ')
+                                lyric = lyric.replace('al:','Album - ')
+                                removeString = "[1234567890.:]"
+                                for char in removeString:
+                                    lyric = lyric.replace(char,'')
+                                ret_ = "╔══[ Lyric ]"
+                                ret_ += "\n╠ Nama lagu : {}".format(str(song[0]))
+                                ret_ += "\n╠ Durasi : {}".format(str(song[1]))
+                                ret_ += "\n╠ Link : {}".format(str(song[3]))
+                                ret_ += "\n╚══[ Finish ]\n{}".format(str(lyric))
+                                cl.sendText(msg.to, str(ret_))
+                        except:
+                            cl.sendText(to, "Lirik tidak ditemukan")
                         
 	    elif "/musrik " in msg.text:
 					songname = msg.text.replace("/musrik ","")
